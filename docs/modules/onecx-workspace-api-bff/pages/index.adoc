@@ -1,0 +1,11 @@
+include::onecx-workspace-api-bff-attributes.adoc[opts=optional]
+
+== onecx-workspace-api-bff
+
+include::docs.adoc[opts=optional]
+
+
+include::onecx-workspace-api-bff-docs.adoc[opts=optional]
+s=optional]
+
+include::onecx-workspace-api-bff-docs.adoc[opts=optional]

@@ -1,2 +1,2 @@
-# onecx-workspace-api-bff
-OneCx workspace API BFF
+# onecx-workspace-bff
+OneCx workspace BFF
