@@ -1,4 +1,4 @@
-package org.tkit.onecx.workspace.api.bff.rs;
+package org.tkit.onecx.workspace.api.bff.rs.v1;
 
 import io.quarkus.test.junit.QuarkusIntegrationTest;
 

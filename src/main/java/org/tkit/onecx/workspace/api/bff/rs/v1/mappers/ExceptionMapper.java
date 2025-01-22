@@ -1,4 +1,4 @@
-package org.tkit.onecx.workspace.api.bff.rs.mappers;
+package org.tkit.onecx.workspace.api.bff.rs.v1.mappers;
 
 import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
 
@@ -17,15 +17,15 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.tkit.quarkus.rs.mappers.OffsetDateTimeMapper;
 
-import gen.org.tkit.onecx.workspace.bff.rs.internal.model.ProblemDetailInvalidParamDTO;
-import gen.org.tkit.onecx.workspace.bff.rs.internal.model.ProblemDetailParamDTO;
-import gen.org.tkit.onecx.workspace.bff.rs.internal.model.ProblemDetailResponseDTO;
+import gen.org.tkit.onecx.workspace.api.rs.external.v1.model.ProblemDetailInvalidParamDTOV1;
+import gen.org.tkit.onecx.workspace.api.rs.external.v1.model.ProblemDetailParamDTOV1;
+import gen.org.tkit.onecx.workspace.api.rs.external.v1.model.ProblemDetailResponseDTOV1;
 import gen.org.tkit.onecx.workspace.user.client.model.ProblemDetailResponse;
 
 @Mapper(uses = { OffsetDateTimeMapper.class })
 public interface ExceptionMapper {
 
-    default RestResponse<ProblemDetailResponseDTO> constraint(ConstraintViolationException ex) {
+    default RestResponse<ProblemDetailResponseDTOV1> constraint(ConstraintViolationException ex) {
         var dto = exception("CONSTRAINT_VIOLATIONS", ex.getMessage());
         dto.setInvalidParams(createErrorValidationResponse(ex.getConstraintViolations()));
         return RestResponse.status(Response.Status.BAD_REQUEST, dto);
@@ -47,20 +47,20 @@ public interface ExceptionMapper {
 
     @Mapping(target = "removeParamsItem", ignore = true)
     @Mapping(target = "removeInvalidParamsItem", ignore = true)
-    ProblemDetailResponseDTO map(ProblemDetailResponse problemDetailResponse);
+    ProblemDetailResponseDTOV1 map(ProblemDetailResponse problemDetailResponse);
 
     @Mapping(target = "removeParamsItem", ignore = true)
     @Mapping(target = "params", ignore = true)
     @Mapping(target = "invalidParams", ignore = true)
     @Mapping(target = "removeInvalidParamsItem", ignore = true)
-    ProblemDetailResponseDTO exception(String errorCode, String detail);
+    ProblemDetailResponseDTOV1 exception(String errorCode, String detail);
 
-    default List<ProblemDetailParamDTO> map(Map<String, Object> params) {
+    default List<ProblemDetailParamDTOV1> map(Map<String, Object> params) {
         if (params == null) {
             return List.of();
         }
         return params.entrySet().stream().map(e -> {
-            var item = new ProblemDetailParamDTO();
+            var item = new ProblemDetailParamDTOV1();
             item.setKey(e.getKey());
             if (e.getValue() != null) {
                 item.setValue(e.getValue().toString());
@@ -69,12 +69,12 @@ public interface ExceptionMapper {
         }).toList();
     }
 
-    List<ProblemDetailInvalidParamDTO> createErrorValidationResponse(
+    List<ProblemDetailInvalidParamDTOV1> createErrorValidationResponse(
             Set<ConstraintViolation<?>> constraintViolation);
 
     @Mapping(target = "name", source = "propertyPath")
     @Mapping(target = "message", source = "message")
-    ProblemDetailInvalidParamDTO createError(ConstraintViolation<?> constraintViolation);
+    ProblemDetailInvalidParamDTOV1 createError(ConstraintViolation<?> constraintViolation);
 
     default String mapPath(Path path) {
         return path.toString();
