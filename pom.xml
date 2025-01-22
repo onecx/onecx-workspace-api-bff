@@ -125,15 +125,16 @@
                 <artifactId>openapi-generator-maven-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>internal</id>
+                        <id>v1</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>src/main/openapi/openapi-bff.yaml</inputSpec>
-                            <apiPackage>gen.org.tkit.onecx.workspace.bff.rs.internal</apiPackage>
-                            <modelPackage>gen.org.tkit.onecx.workspace.bff.rs.internal.model</modelPackage>
-                            <typeMappings>File=byte[],Object=Map</typeMappings>
+                            <inputSpec>target/tmp/openapi/onecx-workspace-api-bff-v1.yaml</inputSpec>
+                            <apiPackage>gen.org.tkit.onecx.workspace.api.rs.external.v1</apiPackage>
+                            <modelPackage>gen.org.tkit.onecx.workspace.api.rs.external.v1.model</modelPackage>
+                            <modelNameSuffix>DTOV1</modelNameSuffix>
+                            <apiNameSuffix>ApiV1</apiNameSuffix>
                         </configuration>
                     </execution>
                 </executions>
@@ -179,6 +180,20 @@
                             <url>https://raw.githubusercontent.com/onecx/onecx-workspace-svc/main/src/main/openapi/onecx-user-internal-openapi.yaml</url>
                             <outputDirectory>target/tmp/openapi</outputDirectory>
                             <outputFileName>onecx-workspace-svc-user-menu.yaml</outputFileName>
+                            <skipCache>true</skipCache>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>onecx-workspace-api-bff-v1</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>wget</goal>
+                        </goals>
+                        <configuration>
+                            <url>
+                                https://raw.githubusercontent.com/onecx/onecx-workspace/refs/heads/main/openapi/onecx-workspace-api-bff-v1.yaml                            </url>
+                            <outputDirectory>target/tmp/openapi</outputDirectory>
+                            <outputFileName>onecx-workspace-api-bff-v1.yaml</outputFileName>
                             <skipCache>true</skipCache>
                         </configuration>
                     </execution>

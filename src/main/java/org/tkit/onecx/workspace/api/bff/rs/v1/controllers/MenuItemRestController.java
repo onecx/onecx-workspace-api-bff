@@ -1,4 +1,4 @@
-package org.tkit.onecx.workspace.api.bff.rs.controllers;
+package org.tkit.onecx.workspace.api.bff.rs.v1.controllers;
 
 import static jakarta.ws.rs.core.HttpHeaders.AUTHORIZATION;
 
@@ -14,12 +14,13 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.resteasy.reactive.ClientWebApplicationException;
 import org.jboss.resteasy.reactive.RestResponse;
 import org.jboss.resteasy.reactive.server.ServerExceptionMapper;
-import org.tkit.onecx.workspace.api.bff.rs.mappers.ExceptionMapper;
-import org.tkit.onecx.workspace.api.bff.rs.mappers.UserMenuMapper;
+import org.tkit.onecx.workspace.api.bff.rs.v1.mappers.ExceptionMapper;
+import org.tkit.onecx.workspace.api.bff.rs.v1.mappers.UserMenuMapper;
 import org.tkit.quarkus.log.cdi.LogService;
 
-import gen.org.tkit.onecx.workspace.bff.rs.internal.MenuItemApiService;
-import gen.org.tkit.onecx.workspace.bff.rs.internal.model.*;
+import gen.org.tkit.onecx.workspace.api.rs.external.v1.MenuItemApiV1;
+import gen.org.tkit.onecx.workspace.api.rs.external.v1.model.GetMenuItemsRequestDTOV1;
+import gen.org.tkit.onecx.workspace.api.rs.external.v1.model.ProblemDetailResponseDTOV1;
 import gen.org.tkit.onecx.workspace.user.client.api.UserMenuInternalApi;
 import gen.org.tkit.onecx.workspace.user.client.model.UserWorkspaceMenuRequest;
 import gen.org.tkit.onecx.workspace.user.client.model.UserWorkspaceMenuStructure;
@@ -27,7 +28,7 @@ import gen.org.tkit.onecx.workspace.user.client.model.UserWorkspaceMenuStructure
 @ApplicationScoped
 @Transactional(value = Transactional.TxType.NOT_SUPPORTED)
 @LogService
-public class MenuItemRestController implements MenuItemApiService {
+public class MenuItemRestController implements MenuItemApiV1 {
 
     @Inject
     ExceptionMapper exceptionMapper;
@@ -43,7 +44,7 @@ public class MenuItemRestController implements MenuItemApiService {
     UserMenuInternalApi userMenuClient;
 
     @Override
-    public Response getMenuItems(GetMenuItemsRequestDTO getMenuItemsRequestDTO) {
+    public Response getMenuItems(GetMenuItemsRequestDTOV1 getMenuItemsRequestDTO) {
         var token = headers.getRequestHeader(AUTHORIZATION).get(0);
         UserWorkspaceMenuRequest request = mapper.map(getMenuItemsRequestDTO, token);
         try (Response response = userMenuClient.getUserMenu(getMenuItemsRequestDTO.getWorkspaceName(), request)) {
@@ -53,7 +54,7 @@ public class MenuItemRestController implements MenuItemApiService {
     }
 
     @ServerExceptionMapper
-    public RestResponse<ProblemDetailResponseDTO> constraint(ConstraintViolationException ex) {
+    public RestResponse<ProblemDetailResponseDTOV1> constraint(ConstraintViolationException ex) {
         return exceptionMapper.constraint(ex);
     }
 

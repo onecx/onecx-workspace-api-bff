@@ -1,4 +1,4 @@
-package org.tkit.onecx.workspace.api.bff.rs;
+package org.tkit.onecx.workspace.api.bff.rs.v1;
 
 import org.eclipse.microprofile.config.ConfigProvider;
 
