@@ -1,7 +1,7 @@
 app:
-  name: bff
+  name: api
   image:
-    repository: "onecx/onecx-workspace-bff"
+    repository: "onecx/onecx-workspace-api-bff"
   operator:
     # Permission
     permission:
