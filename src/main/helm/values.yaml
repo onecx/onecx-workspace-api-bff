@@ -1,5 +1,5 @@
 app:
-  name: api
+  name: api-bff
   image:
     repository: "onecx/onecx-workspace-api-bff"
   operator:
