@@ -46,7 +46,7 @@ Default values
 [source,yaml]
 ----
 app:
-  name: api
+  name: api-bff
   image:
     repository: "onecx/onecx-workspace-api-bff"
   operator:
@@ -66,7 +66,7 @@ app:
 
 ----
 
-uests
+s
           product:
             read: permission on all GET requests and POST search
             write: permission on PUT, POST, PATCH requests, where objects are saved or updated
