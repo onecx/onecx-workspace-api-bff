@@ -4,8 +4,7 @@ include::onecx-workspace-api-bff-attributes.adoc[opts=optional]
 
 include::docs.adoc[opts=optional]
 
-
-include::onecx-workspace-api-bff-docs.adoc[opts=optional]
-s=optional]
+=== Configuration
+include::onecx-workspace-api-bff.adoc[opts=optional]
 
 include::onecx-workspace-api-bff-docs.adoc[opts=optional]
