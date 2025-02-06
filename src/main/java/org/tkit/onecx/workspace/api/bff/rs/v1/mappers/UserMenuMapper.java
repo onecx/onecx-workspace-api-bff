@@ -18,8 +18,6 @@ public abstract class UserMenuMapper {
     @Inject
     PathConfig pathConfig;
 
-    private String preparedPrefix;
-
     public abstract UserWorkspaceMenuRequest map(GetMenuItemsRequestDTOV1 userWorkspaceMenuRequestDTO, String token);
 
     @Mapping(target = "removeMenuItem", ignore = true)
@@ -29,27 +27,20 @@ public abstract class UserMenuMapper {
     @Mapping(target = "removeChildrenItem", ignore = true)
     abstract UserWorkspaceMenuItemDTOV1 map(UserWorkspaceMenuItem item);
 
-    @BeforeMapping
-    public void beforeMapping(@MappingTarget UserWorkspaceMenuStructureDTOV1 dto,
-            UserWorkspaceMenuStructure userWorkspaceMenuStructure) {
-        if (!pathConfig.shellMapping().prefix().endsWith("/")) {
-            preparedPrefix = pathConfig.shellMapping().prefix() + "/";
-        } else {
-            preparedPrefix = pathConfig.shellMapping().prefix();
-        }
-    }
-
     @AfterMapping
     void afterMapping(@MappingTarget UserWorkspaceMenuItemDTOV1 itemDTOV1, UserWorkspaceMenuItem item) {
         if (pathConfig.shellMapping().enabled() && itemDTOV1.getExternal() != null
                 && Boolean.FALSE.equals(itemDTOV1.getExternal())) {
-            itemDTOV1.setUrl(mapPath(preparedPrefix, item.getUrl()));
+            itemDTOV1.setUrl(mapPath(pathConfig.shellMapping().prefix(), item.getUrl()));
         }
     }
 
     String mapPath(String prefix, String url) {
         if (url.startsWith("/")) {
             url = url.substring(1);
+        }
+        if (!prefix.endsWith("/")) {
+            prefix += "/";
         }
         return prefix + url;
     }
