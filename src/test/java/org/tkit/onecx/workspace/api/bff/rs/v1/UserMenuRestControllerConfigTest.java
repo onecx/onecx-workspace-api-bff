@@ -4,7 +4,6 @@ import static io.restassured.RestAssured.given;
 import static jakarta.ws.rs.core.MediaType.APPLICATION_JSON;
 import static org.mockserver.model.HttpRequest.request;
 import static org.mockserver.model.HttpResponse.response;
-import static org.tkit.onecx.workspace.api.bff.rs.v1.AbstractTest.ADMIN;
 
 import java.util.List;
 
@@ -38,7 +37,7 @@ import io.smallrye.config.SmallRyeConfig;
 
 @QuarkusTest
 @TestHTTPEndpoint(MenuItemRestController.class)
-public class UserMenuRestControllerConfigTest extends AbstractTest {
+class UserMenuRestControllerConfigTest extends AbstractTest {
     @InjectMockServerClient
     MockServerClient mockServerClient;
 

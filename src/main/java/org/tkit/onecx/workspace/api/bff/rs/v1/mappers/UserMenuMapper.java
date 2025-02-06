@@ -41,7 +41,8 @@ public abstract class UserMenuMapper {
 
     @AfterMapping
     void afterMapping(@MappingTarget UserWorkspaceMenuItemDTOV1 itemDTOV1, UserWorkspaceMenuItem item) {
-        if (pathConfig.shellMapping().enabled() && itemDTOV1.getExternal() != null && !itemDTOV1.getExternal()) {
+        if (pathConfig.shellMapping().enabled() && itemDTOV1.getExternal() != null
+                && Boolean.FALSE.equals(itemDTOV1.getExternal())) {
             itemDTOV1.setUrl(mapPath(preparedPrefix, item.getUrl()));
         }
     }
