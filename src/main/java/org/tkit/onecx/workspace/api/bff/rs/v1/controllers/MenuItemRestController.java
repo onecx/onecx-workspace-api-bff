@@ -14,7 +14,6 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 import org.jboss.resteasy.reactive.ClientWebApplicationException;
 import org.jboss.resteasy.reactive.RestResponse;
 import org.jboss.resteasy.reactive.server.ServerExceptionMapper;
-import org.tkit.onecx.workspace.api.bff.rs.v1.PathConfig;
 import org.tkit.onecx.workspace.api.bff.rs.v1.mappers.ExceptionMapper;
 import org.tkit.onecx.workspace.api.bff.rs.v1.mappers.UserMenuMapper;
 import org.tkit.quarkus.log.cdi.LogService;
@@ -43,9 +42,6 @@ public class MenuItemRestController implements MenuItemApiV1 {
     @Inject
     @RestClient
     UserMenuInternalApi userMenuClient;
-
-    @Inject
-    PathConfig pathConfig;
 
     @Override
     public Response getMenuItems(GetMenuItemsRequestDTOV1 getMenuItemsRequestDTO) {
