@@ -16,3 +16,7 @@ app:
         spec:
           kcConfig:
             defaultClientScopes: [ ocx-ws:read, ocx-pm:read ]
+    microservice:
+      spec:
+        description: OneCX Workspace API Backend for Frontend
+        name: OneCX Workspace API BFF
