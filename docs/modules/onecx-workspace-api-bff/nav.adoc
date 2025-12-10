@@ -1,1 +1,0 @@
-* xref:onecx-workspace-api-bff:index.adoc[Workspace API Bff]
