@@ -26,7 +26,7 @@ Environment variable: `+++ONECX_PATH_SHELL_MAPPING_ENABLED+++`
 endif::add-copy-button-to-env-var[]
 --
 |boolean
-|`false`
+|`+++false+++`
 
 a| [[onecx-workspace-api-bff_onecx-path-shell-mapping-prefix]] [.property-path]##link:#onecx-workspace-api-bff_onecx-path-shell-mapping-prefix[`onecx.path.shell-mapping.prefix`]##
 ifdef::add-copy-button-to-config-props[]
@@ -47,7 +47,7 @@ Environment variable: `+++ONECX_PATH_SHELL_MAPPING_PREFIX+++`
 endif::add-copy-button-to-env-var[]
 --
 |string
-|`ui/`
+|`+++ui/+++`
 
 |===
 
