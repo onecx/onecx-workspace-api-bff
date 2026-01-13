@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>onecx-workspace-api-bff</artifactId>
+    <name>OneCX Workspace API Backend For Frontend</name>
     <version>999-SNAPSHOT</version>
 
     <dependencies>
