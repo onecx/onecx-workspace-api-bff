@@ -7,7 +7,7 @@ h|[.header-title]##Configuration property##
 h|Type
 h|Default
 
-a| [[onecx-workspace-api-bff_onecx-path-shell-mapping-enabled]] [.property-path]##link:#onecx-workspace-api-bff_onecx-path-shell-mapping-enabled[`onecx.path.shell-mapping.enabled`]##
+a| [[onecx-workspace-api-bff_onecx-path-shell-mapping-enabled]] [.property-path]##link:#onecx-workspace-api-bff_onecx-path-shell-mapping-enabled[`+++onecx.path.shell-mapping.enabled+++`]##
 ifdef::add-copy-button-to-config-props[]
 config_property_copy_button:+++onecx.path.shell-mapping.enabled+++[]
 endif::add-copy-button-to-config-props[]
@@ -28,7 +28,7 @@ endif::add-copy-button-to-env-var[]
 |boolean
 |`+++false+++`
 
-a| [[onecx-workspace-api-bff_onecx-path-shell-mapping-prefix]] [.property-path]##link:#onecx-workspace-api-bff_onecx-path-shell-mapping-prefix[`onecx.path.shell-mapping.prefix`]##
+a| [[onecx-workspace-api-bff_onecx-path-shell-mapping-prefix]] [.property-path]##link:#onecx-workspace-api-bff_onecx-path-shell-mapping-prefix[`+++onecx.path.shell-mapping.prefix+++`]##
 ifdef::add-copy-button-to-config-props[]
 config_property_copy_button:+++onecx.path.shell-mapping.prefix+++[]
 endif::add-copy-button-to-config-props[]
